@@ -1,0 +1,4 @@
+-- WARNING  [py.warnings] -- /home-1/dmohamm2@jhu.edu/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py:893: UserWarning: loadtxt: Empty input file: "/tmp/tmplHhnUK"
+  warnings.warn('loadtxt: Empty input file: "%s"' % fname)
+
+-- ERROR    [west.propagators.executable] -- could not read pcoord from '/tmp/tmplHhnUK': ValueError('progress coordinate data has incorrect shape (0, 1) [expected (11, 1)]',)

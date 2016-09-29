@@ -1,0 +1,23 @@
+simulation lsp_3d root is /home-1/dmohamm2@jhu.edu/scratch/lsp_3d
+Creating HDF5 file '/scratch/users/dmohamm2@jhu.edu/lsp_3d/west.h5'
+2 target state(s) present
+Calculating progress coordinate values for basis states.
+1 basis state(s) present
+Preparing initial states
+-- WARNING  [py.warnings] -- /home-1/dmohamm2@jhu.edu/anaconda2/lib/python2.7/site-packages/h5py/_hl/dataset.py:76: DeprecationWarning: numpy boolean negative, the `-` operator, is deprecated, use the `~` operator or the logical_not function instead.
+  if isinstance(chunks, tuple) and (-numpy.array([ i>=j for i,j in zip(tmp_shape,chunks) if i is not None])).any():
+
+
+        Total bins:            16
+        Initial replicas:      6 in 1 bins, total weight = 1
+        Total target replicas: 96
+        
+Simulation prepared.
+1 of 16 (6.250000%) active bins are populated
+per-bin minimum non-zero probability:       1
+per-bin maximum probability:                1
+per-bin probability dynamic range (kT):     0
+per-segment minimum non-zero probability:   0.166667
+per-segment maximum non-zero probability:   0.166667
+per-segment probability dynamic range (kT): 0
+norm = 1, error in norm = -1.11022e-16 (-0.5*epsilon)

@@ -1,0 +1,28 @@
+simulation lsp_3d root is /home-1/dmohamm2@jhu.edu/dariush/westpa/lsp_3d
+Creating HDF5 file '/home-1/dmohamm2@jhu.edu/dariush/westpa/lsp_3d/west.h5'
+2 target state(s) present
+Calculating progress coordinate values for basis states.
+Traceback (most recent call last):
+  File "/home-1/dmohamm2@jhu.edu/dariush/westpa/westpa/lib/cmds/w_init.py", line 125, in <module>
+    suppress_we=args.shotgun)
+  File "/home-1/dmohamm2@jhu.edu/dariush/westpa/westpa/src/west/sim_manager.py", line 249, in initialize_simulation
+    self.get_bstate_pcoords(basis_states)        
+  File "/home-1/dmohamm2@jhu.edu/dariush/westpa/westpa/src/west/sim_manager.py", line 201, in get_bstate_pcoords
+    basis_states[fmap[future]].pcoord = future.get_result().pcoord
+  File "/home-1/dmohamm2@jhu.edu/dariush/westpa/westpa/lib/wwmgr/work_managers/serial.py", line 39, in submit
+    result = fn(*(args if args is not None else ()), **(kwargs if kwargs is not None else {}))
+  File "/home-1/dmohamm2@jhu.edu/dariush/westpa/westpa/src/west/wm_ops.py", line 26, in get_pcoord
+    propagator.get_pcoord(state)
+  File "/home-1/dmohamm2@jhu.edu/dariush/westpa/westpa/src/west/propagators/executable.py", line 390, in get_pcoord
+    rc, rusage = execfn(child_info, state, addtl_env)
+  File "/home-1/dmohamm2@jhu.edu/dariush/westpa/westpa/src/west/propagators/executable.py", line 355, in exec_for_basis_state
+    return self.exec_child_from_child_info(child_info, template_args, environ)
+  File "/home-1/dmohamm2@jhu.edu/dariush/westpa/westpa/src/west/propagators/executable.py", line 256, in exec_child_from_child_info
+    stderr= self.makepath(child_info['stderr'], template_args) if child_info['stderr'] else None)        
+  File "/home-1/dmohamm2@jhu.edu/dariush/westpa/westpa/src/west/propagators/executable.py", line 239, in exec_child
+    close_fds=True, env=all_environ)
+  File "/cm/shared/apps/anaconda/2.7.10/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/cm/shared/apps/anaconda/2.7.10/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory

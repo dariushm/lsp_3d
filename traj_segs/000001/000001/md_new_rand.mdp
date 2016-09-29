@@ -1,0 +1,59 @@
+;
+; STANDARD MD INPUT OPTIONS FOR MARTINI 2.x
+; for use with GROMACS 5.x
+;
+
+title                    = Martini
+
+; TIMESTEP IN MARTINI 
+integrator               = md
+dt                       = 0.02  
+nsteps                   = 100000		; 2ns
+nstcomm                  = 10
+comm-grps		 = 
+
+nstxout                  = 0
+nstvout                  = 0
+nstfout                  = 0
+nstlog                   = 5000
+nstenergy                = 1000
+nstxtcout                = 5000
+xtc_precision            = 1000
+xtc-grps                 = 
+energygrps               = Protein non-Protein
+
+; NEIGHBOURLIST and MARTINI 
+cutoff-scheme		 = Verlet			
+nstlist                  = 10
+ns_type                  = grid
+pbc                      = xyz
+
+; MARTINI and NONBONDED 
+coulombtype              = Reaction_field   ;(for use with Verlet-pairlist) ;PME (especially with polarizable water)
+rcoulomb                 = 1.2
+rvdw                     = 1.2	;1.1 (for use with Verlet-pairlist)
+
+
+; MARTINI and TEMPERATURE/PRESSURE
+tcoupl                   = v-rescale 
+tc-grps                  = Protein non-Protein
+tau_t                    = 1.0  1.0
+ref_t                    = 310 310
+
+Pcoupl                   = parrinello-rahman 
+Pcoupltype               = isotropic
+tau_p                    = 12.0  ;parrinello-rahman is more stable with larger tau-p, DdJ, 20130422
+compressibility          = 3e-4
+ref_p                    = 1.0
+
+gen_vel                  = yes
+gen_temp                 = 310
+gen_seed                 = 25441
+
+; MARTINI and CONSTRAINTS 
+continuation    	 = no           ; first dynamics run
+constraints              = none 
+constraint_algorithm     = Lincs
+unconstrained_start      = no
+lincs_order              = 4
+lincs_warnangle          = 30

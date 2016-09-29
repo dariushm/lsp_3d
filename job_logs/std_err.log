@@ -1,0 +1,185 @@
++ sort++ env
++ cd /scratch/users/dmohamm2@jhu.edu/lsp_3d
++ mkdir -pv /scratch/users/dmohamm2@jhu.edu/lsp_3d/traj_segs/000001/000004
++ cd /scratch/users/dmohamm2@jhu.edu/lsp_3d/traj_segs/000001/000004
++ cp /scratch/users/dmohamm2@jhu.edu/lsp_3d/gromacs_config/em_w.tpr /scratch/users/dmohamm2@jhu.edu/lsp_3d/gromacs_config/index.ndx /scratch/users/dmohamm2@jhu.edu/lsp_3d/gromacs_config/martini_v2.0_ions.itp /scratch/users/dmohamm2@jhu.edu/lsp_3d/gromacs_config/martini_v2.0_lipids.itp /scratch/users/dmohamm2@jhu.edu/lsp_3d/gromacs_config/martini_v2.2.itp /scratch/users/dmohamm2@jhu.edu/lsp_3d/gromacs_config/martini_v2.2P.itp /scratch/users/dmohamm2@jhu.edu/lsp_3d/gromacs_config/md_cont.mdp /scratch/users/dmohamm2@jhu.edu/lsp_3d/gromacs_config/md_new.mdp /scratch/users/dmohamm2@jhu.edu/lsp_3d/gromacs_config/Protein_A2.itp /scratch/users/dmohamm2@jhu.edu/lsp_3d/gromacs_config/Protein_A.itp /scratch/users/dmohamm2@jhu.edu/lsp_3d/gromacs_config/rand_gen.sh /scratch/users/dmohamm2@jhu.edu/lsp_3d/gromacs_config/topol.top .
++ case $WEST_CURRENT_SEG_INITPOINT_TYPE in
++ cp /scratch/users/dmohamm2@jhu.edu/lsp_3d/bstates/initial.gro ./parent.gro
++ rand=25441++ sed '51s/.*/gen_seed                 = 25441/' md_new.md+ + gmx_mpi grompp -f md_new_rand.mdp -c parent.gro -p /scratch/users/dmohamm2@jhu.edu/lsp_3d/gromacs_config/topol.top -n /scratch/users/dmohamm2@jhu.edu/lsp_3d/gromacs_config/index.ndx -o seg.tpr -po md_out.mdp -maxwarn 1                  :-) GROMACS - gmx grompp, VERSION 5.1.1 (-:
+
+                            GROMACS is written by:
+     Emile Apol      Rossen Apostolov  Herman J.C. Berendsen    Par Bjelkmar   
+ Aldert van Buuren   Rudi van Drunen     Anton Feenstra   Sebastian Fritsch 
+  Gerrit Groenhof   Christoph Junghans   Anca Hamuraru    Vincent Hindriksen
+ Dimitrios Karkoulis    Peter Kasson        Jiri Kraus      Carsten Kutzner  
+    Per Larsson      Justin A. Lemkul   Magnus Lundborg   Pieter Meulenhoff 
+   Erik Marklund      Teemu Murtola       Szilard Pall       Sander Pronk   
+   Roland Schulz     Alexey Shvetsov     Michael Shirts     Alfons Sijbers  
+   Peter Tieleman    Teemu Virolainen  Christian Wennberg    Maarten Wolf   
+                           and the project leaders:
+        Mark Abraham, Berk Hess, Erik Lindahl, and David van der Spoel
+
+Copyright (c) 1991-2000, University of Groningen, The Netherlands.
+Copyright (c) 2001-2015, The GROMACS development team at
+Uppsala University, Stockholm University and
+the Royal Institute of Technology, Sweden.
+check out http://www.gromacs.org for more information.
+
+GROMACS is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License
+as published by the Free Software Foundation; either version 2.1
+of the License, or (at your option) any later version.
+
+GROMACS:      gmx grompp, VERSION 5.1.1
+ExExecutable:   /cm/shared/apps/Intel/gromacs/5.1.1/base/bin/gmx_mpDaData prefix:  /cm/shared/apps/Intel/gromacs/5.1.1/base
+Command line:
+  gmx_mpi grompp -f md_new_rand.mdp -c parent.gro -p /scratch/users/dmohamm2@jhu.edu/lsp_3d/gromacs_config/topol.top -n /scratch/users/dmohamm2@jhu.edu/lsp_3d/gromacs_config/index.ndx -o seg.tpr -po md_out.mdp -maxwarn 10IgIgnoring obsolete mdp entry 'title'
+Replacing old mdp entry 'unconstrained_start' by 'continuation'
+Replacing old mdp entry 'nstxtcout' by 'nstxout-compressed'
+Replacing old mdp entry 'xtc_precision' by 'compressed-x-precision
+B
+Back Off! I just backed up md_out.mdp to ./#md_out.mdp.1
+W
+WARNING 1 [file md_new_rand.mdp, line 60]:
+  Unknown left-hand 'continuation' in parameter file
+
+NOTE 1 [file md_new_rand.mdp]:
+  nstcomm < nstcalcenergy defeats the purpose of nstcalcenergy, setting
+  nstcomm to nstcalcenergy
+
+
+WARNING 2 [file md_new_rand.mdp]:
+  You are generating velocities so I am assuming you are equilibrating a
+  system. You are using Parrinello-Rahman pressure coupling, but this can
+  be unstable for equilibration. If your system crashes, try equilibrating
+  first with Berendsen pressure coupling. If you are not equilibrating the
+  system, you can probably ignore this warning.
+
+Setting the LD random seed to 1569464081
+Generated 0 of the 780 non-bonded parameter combinations
+Excluding 1 bonded neighbours molecule type 'Protein_A'
+Excluding 1 bonded neighbours molecule type 'Protein_A2'
+Excluding 1 bonded neighbours molecule type 'W'
+Excluding 1 bonded neighbours molecule type 'NA+'VVelocities were taken from a Maxwell distribution at 310 K
+Removing all charge groups because cutoff-scheme=Verlet
+
+WARNING 3 [file topol.top, line 15]:
+  The bond in molecule-type Protein_A between atoms 1 BB and 2 BB has an
+  estimated oscillational period of 9.7e-02 ps, which is less than 5 times
+  the time step of 2.0e-02 ps.
+  Maybe you forgot to change the constraints mdp option.
+
+Number of degrees of freedom in T-Coupling group Protein is 2463.97
+Number of degrees of freedom in T-Coupling group non-Protein is 257208.03
+
+There was 1 note
+
+There were 3 warnings
+
+Back Off! I just backed up seg.tpr to ./#seg.tpr.1#
+
+gcq#511: "Please implement proper hep writing" (GROMACS)
+
++ export OMP_NUM_THREADS=1
++ OMP_NUM_THREADS=1
++ gmx_mpi mdrun -v -s seg.tpr -de                   :-) GROMACS - gmx mdrun, VERSION 5.1.1 (-:
+
+                            GROMACS is written by:
+     Emile Apol      Rossen Apostolov  Herman J.C. Berendsen    Par Bjelkmar   
+ Aldert van Buuren   Rudi van Drunen     Anton Feenstra   Sebastian Fritsch 
+  Gerrit Groenhof   Christoph Junghans   Anca Hamuraru    Vincent Hindriksen
+ Dimitrios Karkoulis    Peter Kasson        Jiri Kraus      Carsten Kutzner  
+    Per Larsson      Justin A. Lemkul   Magnus Lundborg   Pieter Meulenhoff 
+   Erik Marklund      Teemu Murtola       Szilard Pall       Sander Pronk   
+   Roland Schulz     Alexey Shvetso  A   Michael Shirt      Alfons Sijber   
+   Peter Tielema     Teemu Virolain  T Christian Wennb Ch    Maarten Wolf   
+                                           and the 
+        
+               Mark Abraham, Berk Hess, Erik Lindahl, and David van der Spoel
+
+Copyright (c) 1991-2000, University of Groningen, The NetherCopyrigCopyright (c) 2001-2015, The GROMACS development team at
+Uppsala University, Stockholm University and
+the Royal Institute of Technology, Sweden.
+check out http://www.gromacs.org for more informaGROMACS is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License
+as published by the Free Software Foundation; either version 2.1
+of the of the License, or (at your option) any later ve
+GROMACS:      gmx mdrun, VERSION 5.1.1
+Executable:   /cm/shared/apps/Intel/gromacs/5.1.1/base/bin/gmx_mpi
+Data prefix:  /cm/shared/apps/Intel/gromacs/5.1.1/base
+CommandCommand line:
+  gmx_mpi mdrun -v -s seg.tpr -deffn
+Back O
+Back Off! I just backed up seg.log to ./#seg.
+Runnin
+Running on 1 node with total 24 cores, 24 logical cores
+Hardware detected on host compute0223 (the node of MPI rank 0):
+  CPU info:
+    Vendor: GenuineIntel
+    Brand:  Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz
+    SIMD instructions most likely to fit this hardware: AVX2_256
+    SIMD instructions selected at GROMACS compile time: AVX_256
+
+Compiled SIMD instructions: AVX_256, GROMACS could use AVX2_256 on this machine, which is bReadingReading file seg.tpr, VERSION 5.1.1 (single precThe numThe number of OpenMP threads was set by environment variable OMP_NUM_THREADUsing 1Using 1 MPI pUsing 1Using 1 OpenMP th
+Back O
+Back Off! I just backed up seg.xtc to ./#seg.
+Back O
+Back Off! I just backed up seg.edr to ./#seg.starting mdrun 'lsp-lsp 60A cg system'
+100000 steps,   20step 0step 100step 100, will finish Thu Sep 29 23:5step 200step 200, will finish Thu Sep 29 23:4step 300step 300, will finish Thu Sep 29 23:4stepstestep 400, will finish Thu Sep 29 23:4stepstep 500, will finish Thu Sep 29 23:48:00stepstep 600, will finish Thu Sep 29 23:47:51stepstep 700, will finish Thu Sep 29 23:47:42stepstep 800, will finish Thu Sep 29 23:47:30stepstep 900, will finish Thu Sep 29 23:47:21stepstep 1000, will finish Thu Sep 29 23:47:15stepstep 1100, will finish Thu Sep 29 23:47:10stepstep 1200, will finish Thu Sep 29 23:47:06stepstep 1300, will finish Thu Sep 29 23:47:02stepstep 1400, will finish Thu Sep 29 23:47:01stepstep 1500, will finish Thu Sep 29 23:46:59stepstep 1600, will finish Thu Sep 29 23:47:03stepstep 1700, will finish Thu Sep 29 23:47:00stepstep 1800, will finish Thu Sep 29 23:46:59stepstep 1900, will finish Thu Sep 29 23:46:59stepstep 2000, will finish Thu Sep 29 23:46:56stepstep 2100, will finish Thu Sep 29 23:46:55stepstep 2200, will finish Thu Sep 29 23:46:53stepstep 2300, will finish Thu Sep 29 23:46:52stepstep 2400, will finish Thu Sep 29 23:46:51stepstep 2500, will finish Thu Sep 29 23:46:50stepstep 2600, will finish Thu Sep 29 23:46:48stepstep 2700, will finish Thu Sep 29 23:46:47stepstep 2800, will finish Thu Sep 29 23:46:47stepstep 2900, will finish Thu Sep 29 23:46:46stepstep 3000, will finish Thu Sep 29 23:46:46stepstep 3100, will finish Thu Sep 29 23:46:46stepstep 3200, will finish Thu Sep 29 23:46:47stepstep 3300, will finish Thu Sep 29 23:46:47stepstep 3400, will finish Thu Sep 29 23:46:45stepstep 3500, will finish Thu Sep 29 23:46:44 20162/scratch/users/dmohamm2@jhu.edu/lsp_3d/westpa_scripts/runseg.sh: line 42: 28129 Killed                  $MDRUN -v -s seg.tpr -deffnm seg
++ gmx_mpi mindist -f seg.xtc -s em_w.tpr -od mindist.xvg -xvg none -n /scratch/users/dmohamm2@jhu.edu/lsp_3d/gromacs_config/index.ndx -nice 19 -pbc
+                  :-) GROMACS - gmx mindist, VERSION 5.1.1 (-:
+
+                            GROMACS is written by:
+     Emile Apol      Rossen Apostolov  Herman J.C. Berendsen    Par Bjelkmar   
+ Aldert van Buuren   Rudi van Drunen     Anton Feenstra   Sebastian Fritsch 
+  Gerrit Groenhof   Christoph Junghans   Anca Hamuraru    Vincent Hindriksen
+ Dimitrios Karkoulis    Peter Kasson        Jiri Kraus      Carsten Kutzner  
+    Per Larsson      Justin A. Lemkul   Magnus Lundborg   Pieter Meulenhoff 
+   Erik Marklund      Teemu Murtola       Szilard Pall       Sander Pronk   
+   Roland Schulz     Alexey Shvetsov     Michael Shirts     Alfons Sijbers  
+   Peter Tieleman    Teemu Virolainen  Christian Wennberg    Maarten Wolf   
+                           and the project leaders:
+        Mark Abraham, Berk Hess, Erik Lindahl, and David van der Spoel
+
+Copyright (c) 1991-2000, University of Groningen, The Netherlands.
+Copyright (c) 2001-2015, The GROMACS development team at
+Uppsala University, Stockholm University and
+the Royal Institute of Technology, Sweden.
+check out http://www.gromacs.org for more information.
+
+GROMACS is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License
+as published by the Free Software Foundation; either version 2.1
+of the License, or (at your option) any later version.
+
+GROMACS:      gmx mindist, VERSION 5.1.1
+Executable:   /cm/shared/apps/Intel/gromacs/5.1.1/base/bin/gmx_mpi
+Data prefix:  /cm/shared/apps/Intel/gromacs/5.1.1/base
+Command line:
+  gmx_mpi mindist -f seg.xtc -s em_w.tpr -od mindist.xvg -xvg none -n /scratch/users/dmohamm2@jhu.edu/lsp_3d/gromacs_config/index.ndx -nice 19 -pbc
+
+Reading file em_w.tpr, VERSION 5.1.1 (single precision)
+Reading file em_w.tpr, VERSION 5.1.1 (single precision)
+Group     0 (         System) has 86653 elements
+Group     1 (        Protein) has   916 elements
+Group     2 (      Protein-H) has   916 elements
+Group     3 (        C-alpha) has     0 elements
+Group     4 (       Backbone) has     0 elements
+Group     5 (      MainChain) has     0 elements
+Group     6 (   MainChain+Cb) has     0 elements
+Group     7 (    MainChain+H) has     0 elements
+Group     8 (      SideChain) has   916 elements
+Group     9 (    SideChain-H) has   916 elements
+Group    10 (    Prot-Masses) has   916 elements
+Group    11 (    non-Protein) has 85737 elements
+Group    12 (          Other) has 85737 elements
+Group    13 (              W) has 85713 elements
+Group    14 (            ION) has    24 elements
+Group    15 (         lsp1_1) has   189 elements
+Group    16 (         lsp1_2) has   189 elements
+Select a group: Select a group: Reading frame       0 time    0.000   
+Back Off! I just backed up mindist.xvg to ./#mindist.xvg.1#
+Last frame          0 time    0.000   
+
+gcq#418: "A curious aspect of the theory of evolution is that everybody thinks he understands it." (Jacques Monod)
+
